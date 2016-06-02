@@ -1,0 +1,21 @@
+
+{% load staticfiles %}
+
+{% include 'communitycrmapp/header.html' %}
+<br>
+<h3>
+  All Members
+</h3>
+<p>
+  Any instructions
+</p>
+{% include 'communitycrmapp/search.html' %}
+{% block main %}
+<br>
+{% for member in members %}
+{% include 'communitycrmapp/member.html' %}
+{% endfor %}
+<p> note </p>
+{% endblock %}
+
+{% include 'communitycrmapp/footer.html' %}
