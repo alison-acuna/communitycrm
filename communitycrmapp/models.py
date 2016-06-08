@@ -6,19 +6,19 @@ from django.utils import timezone
 
 class Member(models.Model):
     name = models.CharField(max_length=200)
-    number = models.CharField(max_length=12)
+    meetupid = models.CharField(max_length=20)
     email = models.EmailField()
-    fbpagelink = models.URLField()
     address = models.TextField()
-    meetuplink = models.URLField()
-    polynteer = models.BooleanField()
-    eventshosted = models.SmallIntegerField()
+    phone = models.CharField(max_length=12)
+    volunteer = models.NullBooleanField()
+    host = models.SmallIntegerField()
     eventshostedname = models.CharField(max_length=200)
-    ohb = models.BooleanField()
+    ohb = models.NullBooleanField()
     ohbcontributions = models.SmallIntegerField()
-    launchteam = models.BooleanField()
+    launchteam = models.NullBooleanField()
     launchteamcontributions = models.SmallIntegerField()
-    fbgroupmember = models.BooleanField()
+    fbgroupmember = models.NullBooleanField()
+    fbpagelink = models.URLField()
     donationtotalammount = models.SmallIntegerField()
 
 

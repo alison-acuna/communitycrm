@@ -15,4 +15,6 @@ urlpatterns = [
     url(r'^searchbylt', views.search_by_lt, name='search_by_lt'),
     url(r'^searchbyfb', views.search_by_fb, name='search_by_fb'),
     url(r'^donor_search', views.donor_search, name='donor_search'),
+    url(r'^meetups/(?P<id>\d+)/', views.meetups, name='meetups'),
+    # url(r'^meetups/(?P<id>\d+)/', views.meetups, name='meetups'),
 ]

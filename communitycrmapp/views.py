@@ -3,6 +3,9 @@ from django.template import RequestContext
 from .forms import MemberForm
 from .models import Member
 from django.core.exceptions import *
+import requests
+
+
 
 # Create your views here.
 
@@ -11,6 +14,25 @@ def home(request):
 
 def searchpage(request):
     return render(request, 'communitycrmapp/searchpage.html', {})
+
+def meetups(request, id):
+    member = Member.objects.get(pk=id)
+    meetup_id = member.number
+    r = requests.get("{}{}{}".format('https://api.meetup.com/Portland-Open-20s-and-30s/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true'))
+    meetups = r.json()
+    return render(request, 'communitycrmapp/meetups.html', {
+        'meetups': meetups
+    })
+
+def member_item(request, id):
+    member = Member.objects.get(pk=id)
+    meetup_id = member.number
+    r = requests.get("{}{}{}".format('https://api.meetup.com/Portland-Open-20s-and-30s/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true'))
+    meetups = r.json()
+    return render(request, 'communitycrmapp/member.html', {
+        'member': member,
+        'meetups': meetups,
+    })
 
 def new(request):
     if request.method == "POST":
@@ -27,12 +49,6 @@ def display(request):
     members = Member.objects.all()
     return render(request, 'communitycrmapp/display.html', {
         'members': members
-    })
-
-def member_item(request, id):
-    member = Member.objects.get(pk=id)
-    return render(request, 'communitycrmapp/member.html', {
-        'member': member
     })
 
 def search_by_name(request):
