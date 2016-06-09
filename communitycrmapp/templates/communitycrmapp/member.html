@@ -1,18 +1,21 @@
 <div id="member">
     <h4> Member </h4>
     <p> Name: {{member.name}}</p>
-    <p> Meetups ID Number: {{member.number}}</p>
+    <p> Meetups ID Number: {{member.meetupid}}</p>
     <p> E-mail: {{member.email}}</p>
-    <p> Facebook: {{member.fbpagelink}}</p>
     <p> Address: {{member.address}}</p>
     <p> Meetup: {{member.meetuplink}}</p>
-    <p> Volunteer: {{member.polynteer}}</p>
-    <p> Host: {{member.eventshosted}}{{member.eventshostedname}}</p>
-    <p> Open Heart Brigade: {{member.ohb}}{{member.ohbcontributions}}</p>
-    <p> Launch Team: {{member.launchteam}}{{member.launchteamcontributions}}</p>
+    <p> Volunteer: {{member.volunteer}}</p>
+    <p> Host: {{member.host}}</p><p>{{member.eventshostedname}}</p>
+    <p> Open Heart Brigade: {{member.ohb}}</p><p>{{member.ohbcontributions}}</p>
+    <p> Launch Team: {{member.launchteam}}</p><p>{{member.launchteamcontributions}}</p>
     <p> Facebook: {{member.fbgroupmember}}</p>
+    <p> Facebook: {{member.fbpagelink}}</p>
     <p> Donation: {{member.donationtotalammount}}</p>
-    <p> Meetups Data:{{meetups}}</p>
+    <p> Interests:</p>
+    {% for interest in meetups %}
+      <p>{{interest}}</p>
+    {% endfor %}
     <p> ID: {{member.id}} </p>
     <br>
 </div>

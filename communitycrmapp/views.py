@@ -17,8 +17,8 @@ def searchpage(request):
 
 def meetups(request, id):
     member = Member.objects.get(pk=id)
-    meetup_id = member.number
-    r = requests.get("{}{}{}".format('https://api.meetup.com/Portland-Open-20s-and-30s/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true'))
+    meetup_id = member.meetupid
+    r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
     meetups = r.json()
     return render(request, 'communitycrmapp/meetups.html', {
         'meetups': meetups
@@ -26,12 +26,16 @@ def meetups(request, id):
 
 def member_item(request, id):
     member = Member.objects.get(pk=id)
-    meetup_id = member.number
-    r = requests.get("{}{}{}".format('https://api.meetup.com/Portland-Open-20s-and-30s/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true'))
-    meetups = r.json()
+    meetup_id = member.meetupid
+    r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
+    meetups = (r.json()['topics'])
+    li = []
+    topics = (r.json()['topics'])
+    for topic in topics:
+        li.append(topic['name'])
     return render(request, 'communitycrmapp/member.html', {
         'member': member,
-        'meetups': meetups,
+        'meetups': li
     })
 
 def new(request):
@@ -68,7 +72,7 @@ def search_by_volunteer(request):
     if request.method == "POST":
         search_id = request.POST.get('volunteerquery')
         try:
-            member_by_volunteer = Member.objects.filter(polynteer__exact= search_id)
+            member_by_volunteer = Member.objects.filter(volunteer__exact= search_id)
             return render(request, 'communitycrmapp/results.html', {
                 'member_by_volunteer': member_by_volunteer})
         except Member.DoesNotExist:
@@ -80,7 +84,7 @@ def search_by_host(request):
     if request.method == "POST":
         search_id = request.POST.get('hostquery')
         try:
-            member_by_host = Member.objects.filter(eventshosted__gte= search_id)
+            member_by_host = Member.objects.filter(host__gte= search_id)
             return render(request, 'communitycrmapp/results.html', {
                 'member_by_host': member_by_host})
         except Member.DoesNotExist:

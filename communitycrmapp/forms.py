@@ -13,5 +13,5 @@ class MemberForm(forms.ModelForm):
         model = Member
         fields = ('name', 'email', 'address', 'phone', 'volunteer', 'host',
         'launchteam', 'launchteamcontributions', 'fbgroupmember', 'fbpagelink',
-        'donationtotalammount',
+        'donationtotalammount', 'ohb', 'ohbcontributions', 'eventshostedname', 'meetupid'
         )
