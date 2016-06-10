@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name="home"),
+    url(r'^score/(?P<id>\d+)/', views.score, name="score"),
     url(r'^new', views.new, name='new'),
     url(r'^display', views.display, name='display'),
     url(r'^member/(?P<id>\d+)/', views.member_item, name='member'),
@@ -15,6 +16,4 @@ urlpatterns = [
     url(r'^searchbylt', views.search_by_lt, name='search_by_lt'),
     url(r'^searchbyfb', views.search_by_fb, name='search_by_fb'),
     url(r'^donor_search', views.donor_search, name='donor_search'),
-    url(r'^meetups/(?P<id>\d+)/', views.meetups, name='meetups'),
-    # url(r'^meetups/(?P<id>\d+)/', views.meetups, name='meetups'),
 ]

@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+{% include 'communitycrmapp/header.html' %}
+
+<p>You have a score of {{member.engagement_score}}.  Most members with a score of
+{{member.engagement_score}} have attended a few events but are not yet volunteering.
+Look at a member's interests and the events they are attending.  Are there events that
+connect with the member's interests that they are not attending yet?  Have they joined
+the facebook group yet? Are trends emerging in member interests that could be converted
+into an event? </p>
+
+
+{% include 'communitycrmapp/footer.html' %}

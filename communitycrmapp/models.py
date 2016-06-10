@@ -28,3 +28,16 @@ class Member(models.Model):
 
     def __str__(self):
         return self.name
+
+    def engagement_score(self):
+        engagement_score = 0
+        if self.volunteer:
+            engagement_score += 1
+        if self.ohb:
+            engagement_score += 1
+        if self.launchteam:
+            engagement_score += 1
+        if self.donationtotalammount > 0:
+            engagement_score += 5
+        engagement_score = engagement_score + self.host + self.ohbcontributions + self.launchteamcontributions
+        return engagement_score

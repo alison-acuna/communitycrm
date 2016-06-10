@@ -4,13 +4,26 @@ from .forms import MemberForm
 from .models import Member
 from django.core.exceptions import *
 import requests
+import json
 
 
 
 # Create your views here.
 
+def get_key():
+    with open('./secure/password') as fd:
+        d = json.load(fd)
+        key = d['key']
+        return key
+
 def home(request):
     return render(request, 'communitycrmapp/home.html', {})
+
+def score(request, id):
+    member = Member.objects.get(pk=id)
+    return render(request, 'communitycrmapp/score.html', {
+        'member': member,
+    })
 
 def searchpage(request):
     return render(request, 'communitycrmapp/searchpage.html', {})
@@ -26,26 +39,11 @@ def new(request):
         form = MemberForm()
     return render(request, 'communitycrmapp/new.html', {'form': form})
 
-def meetups(request, id):
+def member_item(request, id, key=get_key()):
     member = Member.objects.get(pk=id)
     # meetups pull starts here
     meetup_id = member.meetupid
-    r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
-    meetups = (r.json()['topics'])
-    li = []
-    topics = (r.json()['topics'])
-    for topic in topics:
-        li.append(topic['name'])
-    # meetups pull ends here
-    return render(request, 'communitycrmapp/meetups.html', {
-        'meetups': meetups
-    })
-
-def member_item(request, id):
-    member = Member.objects.get(pk=id)
-    # meetups pull starts here
-    meetup_id = member.meetupid
-    r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
+    r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
     meetups = (r.json()['topics'])
     li = []
     topics = (r.json()['topics'])
@@ -54,17 +52,16 @@ def member_item(request, id):
     # meetups pull ends here
     return render(request, 'communitycrmapp/member.html', {
         'member': member,
-        'meetups': li,
-        'engagement_score': engagement_score
+        'meetups': li
     })
 
 
-def display(request):
+def display(request, key=get_key()):
     members = Member.objects.all()
     for member in members:
         # meetups pull starts here
         meetup_id = member.meetupid
-        r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
+        r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
         meetups = (r.json()['topics'])
         li = []
         topics = (r.json()['topics'])
@@ -76,7 +73,7 @@ def display(request):
         'meetups': li
     })
 
-def search_by_name(request):
+def search_by_name(request, key=get_key()):
     if request.method == "POST":
         search_id = request.POST.get('namequery')
         try:
@@ -84,7 +81,7 @@ def search_by_name(request):
             for member in member_by_name:
                 # meetups pull starts here
                 meetup_id = member.meetupid
-                r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
+                r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
                 meetups = (r.json()['topics'])
                 li = []
                 topics = (r.json()['topics'])
@@ -99,7 +96,7 @@ def search_by_name(request):
     else:
         return render(request, 'communitycrmapp/searchpage.html')
 
-def search_by_volunteer(request):
+def search_by_volunteer(request, key=get_key()):
     if request.method == "POST":
         search_id = request.POST.get('volunteerquery')
         try:
@@ -107,7 +104,7 @@ def search_by_volunteer(request):
             for member in member_by_volunteer:
                 # meetups pull starts here
                 meetup_id = member.meetupid
-                r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
+                r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
                 meetups = (r.json()['topics'])
                 li = []
                 topics = (r.json()['topics'])
@@ -123,7 +120,7 @@ def search_by_volunteer(request):
     else:
         return render(request, 'communitycrmapp/searchpage.html')
 
-def search_by_host(request):
+def search_by_host(request, key=get_key()):
     if request.method == "POST":
         search_id = request.POST.get('hostquery')
         try:
@@ -131,7 +128,7 @@ def search_by_host(request):
             for member in member_by_host:
                 # meetups pull starts here
                 meetup_id = member.meetupid
-                r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
+                r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
                 meetups = (r.json()['topics'])
                 li = []
                 topics = (r.json()['topics'])
@@ -170,7 +167,7 @@ def search_by_lt(request):
     else:
         return render(request, 'communitycrmapp/searchpage.html')
 
-def search_by_fb(request):
+def search_by_fb(request, key=get_key()):
     if request.method == "POST":
         search_id = request.POST.get('fbquery')
         try:
@@ -178,7 +175,7 @@ def search_by_fb(request):
             for member in member_by_fb:
                 # meetups pull starts here
                 meetup_id = member.meetupid
-                r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
+                r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
                 meetups = (r.json()['topics'])
                 li = []
                 topics = (r.json()['topics'])
@@ -193,7 +190,7 @@ def search_by_fb(request):
     else:
         return render(request, 'communitycrmapp/searchpage.html')
 
-def donor_search(request):
+def donor_search(request, key=get_key()):
     if request.method == "POST":
         search_id = request.POST.get('donationquery')
         try:
@@ -201,7 +198,7 @@ def donor_search(request):
             for member in donor:
                 # meetups pull starts here
                 meetup_id = member.meetupid
-                r = requests.get("{}{}{}".format('https://api.meetup.com/members/', meetup_id, '/?key=68541e621567da7c512e2f6912517&sign=true&fields=topics'))
+                r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
                 meetups = (r.json()['topics'])
                 li = []
                 topics = (r.json()['topics'])
