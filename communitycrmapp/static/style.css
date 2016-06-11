@@ -1,10 +1,32 @@
-body {
-  margin: 2.5%;
+/* header */
+
+.headtext {
+  margin: 1%;
+}
+
+.banner {
+  background-color: black;
+  text-align: center;
+}
+
+.presentation {
+  border-style: solid;
+  border-radius: 5px;
+  border-color: green
 }
 
 .banner-photo {
   height: 30%;
   width: 100%;
+}
+
+/* Content */
+
+.content {
+  margin: 2.5%;
+}
+.body-photo {
+  border-radius: 5px;
 }
 
 .button {
@@ -16,7 +38,7 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 24px;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .login_button {
@@ -36,6 +58,27 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+
+/* New */
+
+.jumbotron {
+  padding: 2.5%;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: green;
+}
+
+/* Member Display */
+
+#member {
+  border-style: solid;
+  border-radius: 5px;
+  border-color: green;
+  padding: 2.5%;
+  margin: 2.5%;
 }
 
 @media screen and (min-width: 660px){

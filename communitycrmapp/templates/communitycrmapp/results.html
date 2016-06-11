@@ -2,13 +2,9 @@
 {% load staticfiles %}
 
 {% include 'communitycrmapp/header.html' %}
-<br>
 <h3>
-  All Members
+  Members
 </h3>
-<p>
-  Any instructions
-</p>
 {% include 'communitycrmapp/search.html' %}
 {% block main %}
 {% for member in member_by_name %}

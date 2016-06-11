@@ -1,41 +1,43 @@
-<form method="POST" action="/searchbyname">
-  {% csrf_token %}
-  Search by Name: <input type="text" name="namequery"/>
-  <button type="submit"> Search </button>
-</form>
-<div>
-<form method="POST" action="/searchbyvolunteer">
-  {% csrf_token %}
-  Volunteer: <input type="checkbox" name="volunteerquery"/>
-  <button type="submit"> Search </button>
-</form>
-<div>
-<form method="POST" action="/searchbyhost">
-  {% csrf_token %}
-  How many events hosted? <input type="number" name="hostquery"/>
-  <button type="submit"> Search </button>
-</form>
-<div>
-<form method="POST" action="/searchbyohb">
-  {% csrf_token %}
-  Member of the OHB? <input type="checkbox" name="ohbquery"/>
-  <button type="submit"> Search </button>
-</form>
-<div>
-<form method="POST" action="/searchbylt">
-  {% csrf_token %}
-  Member of the Launch Team? <input type="checkbox" name="ltquery"/>
-  <button type="submit"> Search </button>
-</form>
-<div>
-<form method="POST" action="/searchbyfb">
-  {% csrf_token %}
-  Member of the Facebook Group? <input type="checkbox" name="fbquery"/>
-  <button type="submit"> Search </button>
-</form>
-<div>
-<form method="POST" action="/donor_search">
-  {% csrf_token %}
-  Donor? <input type="number" name="donationquery"/>
-  <button type="submit"> Search </button>
-</form>
+<div class="jumbotron">
+  <form method="POST" action="/searchbyname">
+    {% csrf_token %}
+    Search by Name: <input type="text" name="namequery"/>
+    <button type="submit"> Search </button>
+  </form>
+  <br>
+  <form method="POST" action="/searchbyvolunteer">
+    {% csrf_token %}
+    Volunteer: <input type="checkbox" name="volunteerquery"/>
+    <button type="submit"> Search </button>
+  </form>
+  <br>
+  <form method="POST" action="/searchbyhost">
+    {% csrf_token %}
+    How many events hosted? <input type="number" name="hostquery"/>
+    <button type="submit"> Search </button>
+  </form>
+  <br>
+  <form method="POST" action="/searchbyohb">
+    {% csrf_token %}
+    Member of the OHB? <input type="checkbox" name="ohbquery"/>
+    <button type="submit"> Search </button>
+  </form>
+  <br>
+  <form method="POST" action="/searchbylt">
+    {% csrf_token %}
+    Member of the Launch Team? <input type="checkbox" name="ltquery"/>
+    <button type="submit"> Search </button>
+  </form>
+  <br>
+  <form method="POST" action="/searchbyfb">
+    {% csrf_token %}
+    Member of the Facebook Group? <input type="checkbox" name="fbquery"/>
+    <button type="submit"> Search </button>
+  </form>
+  <br>
+  <form method="POST" action="/donor_search">
+    {% csrf_token %}
+    Donor? <input type="number" name="donationquery"/>
+    <button type="submit"> Search </button>
+  </form>
+</div>
