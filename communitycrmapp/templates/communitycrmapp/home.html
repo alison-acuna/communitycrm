@@ -1,39 +1,40 @@
 {% load staticfiles %}
 
 {% include 'communitycrmapp/header.html' %}
-<br>
-<p>
-<a href="http://www.theglueproject.com/35-2/">Douglas Atkin</a>, expert in community
-management, popularized the <a href="http://www.theglueproject.com/2012/07/19/how-to-ramp-people-up-the-commitment-curve/">
-Commitment Curve </a> model for how "to ramp up people from low-barrier-to-entry actions to increasingly
-  difficult ones." The idea is to move members towards greater engagement and ensures
- that a community manager is making appropriate asks of members.  Addtionally,
- "lower investment actions tend to predispose people to make higher investment actions
- because they literally become more invested in the community".
-</p>
-<img src="{% static "commitmentcurve.png" %}" alt="commitment curve photo" class="body-photo">
-<br>
-<p> The Community CRM is a tool designed to support community managers in encouraging
-their members to take the next step on the community commitment curve.  The Community CRM
-tracks member engagement through a member engagement score and tracks member interests.  </p>
-<p> The Community CRM is designed for community managers, religious leaders, and non-profit
-  with a community component. </p>
-<br>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6">
-      <h4> Access Community Data </h4>
-      <div class="button" id="signup">
-        Sign Up
+<div class="frame">
+  <br>
+  <p>
+  <a href="http://www.theglueproject.com/35-2/">Douglas Atkin</a>, expert in community
+  management, popularized the <a href="http://www.theglueproject.com/2012/07/19/how-to-ramp-people-up-the-commitment-curve/">
+  Commitment Curve </a> model for how "to ramp up people from low-barrier-to-entry actions to increasingly
+    difficult ones." The idea is to move members towards greater engagement and ensures
+   that a community manager is making appropriate asks of members.  Addtionally,
+   "lower investment actions tend to predispose people to make higher investment actions
+   because they literally become more invested in the community".
+  </p>
+  <img src="{% static "commitmentcurve.png" %}" alt="commitment curve photo" class="body-photo">
+  <br>
+  <p> The Community CRM is a tool designed to support community managers in encouraging
+  their members to take the next step on the community commitment curve.  The Community CRM
+  tracks member engagement through a member engagement score and tracks member interests.  </p>
+  <p> The Community CRM is designed for community managers, religious leaders, and non-profit
+    with a community component. </p>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <h4> Access Community Data </h4>
+        <div class="button" id="signup">
+          Sign Up
+        </div>
       </div>
-    </div>
-    <div class="col-xs-6">
-      <h4> Already a Member?</h4>
-      <div class="button">
-        Sign In
+      <div class="col-xs-6">
+        <h4> Already a Member?</h4>
+        <div class="button">
+          Sign In
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 {% include 'communitycrmapp/footer.html' %}

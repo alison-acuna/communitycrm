@@ -10,23 +10,19 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
   </head>
 <body>
-  <div>
   <header>
-    <div class="banner">
-      <img src="{% static "teambanner.jpg" %}" alt="banner photo">
-    </div>
-    <div class="headtext">
-      <h1>
+    <h1 class="brandheader">
         Community CRM
         <small> A CRM designed to drive engagement. </small>
-      </h1>
+    </h1>
       <br>
-      <ul class="nav nav-pills">
-        <li role="presentation" class="presentation"> <a href="/"> Home </a></li>
-        <li role="presentation" class="presentation"><a href="/new"> Add Members </a></li>
-        <li role="presentation" class="presentation"><a href="/display"> Full Database </a></li>
-        <li role="presentation" class="presentation"><a href="/searchpage"> Search </a></li>
-      </ul>
-    </div>
+      <div class="navframe">
+        <ul class="nav nav-pills">
+          <li role="presentation" class="presentation"> <a href="/"> Home </a></li>
+          <li role="presentation" class="presentation"><a href="/new"> Add Members </a></li>
+          <li role="presentation" class="presentation"><a href="/display"> Full Database </a></li>
+          <li role="presentation" class="presentation"><a href="/searchpage"> Search </a></li>
+        </ul>
+      </div>
   </header>
-  <!-- <div class="content"> -->
+  <div class="content">

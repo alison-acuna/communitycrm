@@ -1,13 +1,52 @@
 {% load staticfiles %}
 
 {% include 'communitycrmapp/header.html' %}
-
-<p>You have a score of {{member.engagement_score}}.  Most members with a score of
-{{member.engagement_score}} have attended a few events but are not yet volunteering.
-Look at a member's interests and the events they are attending.  Are there events that
-connect with the member's interests that they are not attending yet?  Have they joined
-the facebook group yet? Are trends emerging in member interests that could be converted
-into an event? </p>
-
+<div class="frame">
+  <table>
+    <tr>
+      <td><b>Score</b></td>
+      <td><b>Member Type</b></td>
+      <td><b>Description</b></td>
+      <td><b>Recommended Next Steps</b></td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td><b>Explorers</b></td>
+      <td>Explorers have joined but not yet attended an event.</td>
+      <td>Design an event specifically designed for new members or help them explore
+        the group via the blog or facebook group.</td>
+    </tr>
+    <tr>
+      <td>0-5</td>
+      <td><b>New Member</b></td>
+      <td>New members have attended a few events but do not yet experience the community
+      as a major part of their identity.</td>
+      <td> Help new members <br>
+      1) Connect with other members who share their interests. <br>
+      2) Get into a rhythm of attending events. </td>
+    </tr>
+    <tr>
+      <td>5-10</td>
+      <td><b>Active Member</b></td>
+      <td> Active members feel a sense of connection and identity with their community.  They attend event regularly </td>
+      <td>Help active members find a way to contribute to the community as a volunteer, member of the Open Heart Brigade, or Event Host.</td>
+    </tr>
+    <tr>
+      <td>10-20</td>
+      <td><b>Contributing Member</b></td>
+      <td> Contributing Members are actively engaged in co-creating the community.</td>
+      <td> Make sure to regularly communicate vision and changes to contributing members.
+      These members will often step into leadership without prompting if they can see where
+      the community is headed.  </td>
+    </tr>
+    <tr>
+      <td>20+</td>
+      <td><b>Leadership</b></td>
+      <td> The leadership team sets the vision and facilitates other members engagement. </td>
+      <td> Look for opportunities to support leaderships development and to energize leadership
+      to compensate for burn out. </td>
+    </tr>
+  </table>
+</div>
 
 {% include 'communitycrmapp/footer.html' %}

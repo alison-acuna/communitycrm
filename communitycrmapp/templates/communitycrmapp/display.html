@@ -1,17 +1,17 @@
 
 {% load staticfiles %}
 
-{% include 'communitycrmapp/header.html' %}
-<h3>
-  All Members
-</h3>
-{% include 'communitycrmapp/search.html' %}
-{% block main %}
-<br>
-{% for member in members %}
-{% include 'communitycrmapp/member.html' %}
-{% endfor %}
-<p> note </p>
-{% endblock %}
-
+{% include 'communitycrmapp/headertoo.html' %}
+<div class="frame">
+  <h3>
+    All Members
+  </h3>
+  {% include 'communitycrmapp/search.html' %}
+  {% block main %}
+  <br>
+  {% for member in members %}
+    {% include 'communitycrmapp/member.html' %}
+  {% endfor %}
+  {% endblock %}
+</div>
 {% include 'communitycrmapp/footer.html' %}
