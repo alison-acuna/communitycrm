@@ -6,4 +6,5 @@ $(".morebutton").click(function(){
 
 $(".lessbutton").click(function(){
   $("#more").toggle(display = false);
+  $(".morebutton").toggle(display = true);
 })

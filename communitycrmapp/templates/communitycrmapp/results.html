@@ -1,41 +1,42 @@
 
 {% load staticfiles %}
-<div class="frame">
-  {% include 'communitycrmapp/header.html' %}
-  <h3>
-    Members
-  </h3>
-  {% include 'communitycrmapp/search.html' %}
-  {% block main %}
-  {% for member in member_by_name %}
-  <br>
-  {% include 'communitycrmapp/member.html' %}
-  {% endfor %}
-  {% for member in member_by_volunteer %}
-  <br>
-  {% include 'communitycrmapp/member.html' %}
-  {% endfor %}
-  {% for member in member_by_host %}
-  <br>
-  {% include 'communitycrmapp/member.html' %}
-  {% endfor %}
-  {% for member in member_by_ohb %}
-  <br>
-  {% include 'communitycrmapp/member.html' %}
-  {% endfor %}
-  {% for member in member_by_lt %}
-  <br>
-  {% include 'communitycrmapp/member.html' %}
-  {% endfor %}
-  {% for member in member_by_fb %}
-  <br>
-  {% include 'communitycrmapp/member.html' %}
-  {% endfor %}
-  {% for member in donor %}
-  <br>
-  {% include 'communitycrmapp/member.html' %}
-  {% endfor %}
 
-  {% endblock %}
-</div>
+  {% include 'communitycrmapp/headertoo.html' %}
+  <div class="frame">
+    <h3>
+      Members
+    </h3>
+    {% include 'communitycrmapp/search.html' %}
+    {% block main %}
+    {% for member in member_by_name %}
+    <br>
+    {% include 'communitycrmapp/member.html' %}
+    {% endfor %}
+    {% for member in member_by_volunteer %}
+    <br>
+    {% include 'communitycrmapp/member.html' %}
+    {% endfor %}
+    {% for member in member_by_host %}
+    <br>
+    {% include 'communitycrmapp/member.html' %}
+    {% endfor %}
+    {% for member in member_by_ohb %}
+    <br>
+    {% include 'communitycrmapp/member.html' %}
+    {% endfor %}
+    {% for member in member_by_lt %}
+    <br>
+    {% include 'communitycrmapp/member.html' %}
+    {% endfor %}
+    {% for member in member_by_fb %}
+    <br>
+    {% include 'communitycrmapp/member.html' %}
+    {% endfor %}
+    {% for member in donor %}
+    <br>
+    {% include 'communitycrmapp/member.html' %}
+    {% endfor %}
+
+    {% endblock %}
+  </div>
 {% include 'communitycrmapp/footer.html' %}
