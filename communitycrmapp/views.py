@@ -19,11 +19,8 @@ def get_key():
 def home(request):
     return render(request, 'communitycrmapp/home.html', {})
 
-def score(request, id):
-    member = Member.objects.get(pk=id)
-    return render(request, 'communitycrmapp/score.html', {
-        'member': member,
-    })
+def score(request):
+    return render(request, 'communitycrmapp/score.html', {})
 
 def searchpage(request):
     return render(request, 'communitycrmapp/searchpage.html', {})
@@ -54,7 +51,6 @@ def member_item(request, id, key=get_key()):
         'member': member,
         'meetups': li
     })
-
 
 def display(request, key=get_key()):
     members = Member.objects.all()
