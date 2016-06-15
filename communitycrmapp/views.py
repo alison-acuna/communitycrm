@@ -51,11 +51,11 @@ def display(request):
     members = Member.objects.all()
     for member in members:
         # meetups pull starts here
-        meetup_id = member.meetupid
-        r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
-        meetups = (r.json()['topics'])
-        li = []
         try:
+            meetup_id = member.meetupid
+            r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
+            meetups = (r.json()['topics'])
+            li = []
             topics = (r.json()['topics'])
             for topic in topics:
                 li.append(topic['name'])
