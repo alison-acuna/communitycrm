@@ -5,16 +5,10 @@ from .models import Member
 from django.core.exceptions import *
 import requests
 import json
+import os
 
-
-
+key = os.environ.get("MEETUP_API_KEY")
 # Create your views here.
-
-def get_key():
-    with open('./secure/password') as fd:
-        d = json.load(fd)
-        key = d['key']
-        return key
 
 def home(request):
     return render(request, 'communitycrmapp/home.html', {})
@@ -36,7 +30,7 @@ def new(request):
         form = MemberForm()
     return render(request, 'communitycrmapp/new.html', {'form': form})
 
-def member_item(request, id, key=get_key()):
+def member_item(request, id):
     member = Member.objects.get(pk=id)
     # meetups pull starts here
     meetup_id = member.meetupid
@@ -52,7 +46,7 @@ def member_item(request, id, key=get_key()):
         'meetups': li
     })
 
-def display(request, key=get_key()):
+def display(request):
     members = Member.objects.all()
     for member in members:
         # meetups pull starts here
@@ -69,7 +63,7 @@ def display(request, key=get_key()):
         'meetups': li
     })
 
-def search_by_name(request, key=get_key()):
+def search_by_name(request):
     if request.method == "POST":
         search_id = request.POST.get('namequery')
         try:
@@ -92,7 +86,7 @@ def search_by_name(request, key=get_key()):
     else:
         return render(request, 'communitycrmapp/searchpage.html')
 
-def search_by_volunteer(request, key=get_key()):
+def search_by_volunteer(request):
     if request.method == "POST":
         search_id = request.POST.get('volunteerquery')
         try:
@@ -116,7 +110,7 @@ def search_by_volunteer(request, key=get_key()):
     else:
         return render(request, 'communitycrmapp/searchpage.html')
 
-def search_by_host(request, key=get_key()):
+def search_by_host(request):
     if request.method == "POST":
         search_id = request.POST.get('hostquery')
         try:
@@ -163,7 +157,7 @@ def search_by_lt(request):
     else:
         return render(request, 'communitycrmapp/searchpage.html')
 
-def search_by_fb(request, key=get_key()):
+def search_by_fb(request):
     if request.method == "POST":
         search_id = request.POST.get('fbquery')
         try:
@@ -186,7 +180,7 @@ def search_by_fb(request, key=get_key()):
     else:
         return render(request, 'communitycrmapp/searchpage.html')
 
-def donor_search(request, key=get_key()):
+def donor_search(request):
     if request.method == "POST":
         search_id = request.POST.get('donationquery')
         try:
