@@ -5,31 +5,40 @@
         <div class="col-sm-4">
           <h4> Member Information </h4>
           <p><b>Name:</b> {{member.name}}</p>
+          <p><b> Engagment Score: </b> <a href="{% url 'score' %}">{{member.engagement_score}}</a>
           <p><b> Meetups ID Number:</b> {{member.meetupid}}</p>
           <p><b> E-mail: </b> {{member.email}}</p>
           <p><b> Address:</b> {{member.address}}</p>
           <p><b> ID:</b> {{member.id}} </p>
+          <div class="morebutton">
+            More
+          </div>
         </div>
         <br>
-        <div class="col-sm-4">
-          <h4> Member Engagement </h4>
-          <p><b> Engagment Score: </b> <a href="{% url 'score' %}">{{member.engagement_score}}</a>
-          <p><b> Volunteer:</b> {{member.volunteer}}</p>
-          <p><b> Number of Events Hosted: </b>{{member.host}}</p>
-            <p>&nbsp&nbsp&nbsp<i> Events Hosted Name:</i> {{member.eventshostedname}}</p>
-          <p><b> Open Heart Brigade:</b> {{member.ohb}}</p>
-          <p>&nbsp&nbsp&nbsp&nbsp&nbsp<i> Number of Contributions: </i>{{member.ohbcontributions}}</p>
-          <p><b> Launch Team:</b> {{member.launchteam}}</p>
-          <p>&nbsp&nbsp&nbsp&nbsp&nbsp<i> Number of Contributions: </i>{{member.launchteamcontributions}}</p>
-          <p><b> Facebook:</b> {{member.fbgroupmember}}&nbsp&nbsp&nbsp&nbsp&nbsp{{member.fbpagelink}}</p>
-          <p><b> Donation:</b> {{member.donationtotalammount}}</p>
-        </div>
-        <br>
-        <div class="col-sm-4">
-          <h4> Interests:</h4>
-            {% for interest in meetups %}
-              <p>{{interest}}</p>
-            {% endfor %}
+        <div id="more">
+          <div class="col-sm-4">
+            <h4> Member Engagement </h4>
+            <p><b> Engagment Score: </b> <a href="{% url 'score' %}">{{member.engagement_score}}</a>
+            <p><b> Volunteer:</b> {{member.volunteer}}</p>
+            <p><b> Number of Events Hosted: </b>{{member.host}}</p>
+              <p>&nbsp&nbsp&nbsp<i> Events Hosted Name:</i> {{member.eventshostedname}}</p>
+            <p><b> Open Heart Brigade:</b> {{member.ohb}}</p>
+            <p>&nbsp&nbsp&nbsp&nbsp&nbsp<i> Number of Contributions: </i>{{member.ohbcontributions}}</p>
+            <p><b> Launch Team:</b> {{member.launchteam}}</p>
+            <p>&nbsp&nbsp&nbsp&nbsp&nbsp<i> Number of Contributions: </i>{{member.launchteamcontributions}}</p>
+            <p><b> Facebook:</b> {{member.fbgroupmember}}&nbsp&nbsp&nbsp&nbsp&nbsp{{member.fbpagelink}}</p>
+            <p><b> Donation:</b> {{member.donationtotalammount}}</p>
+          </div>
+          <br>
+          <div class="col-sm-4">
+            <h4> Interests:</h4>
+              {% for interest in meetups %}
+                <p>{{interest}}</p>
+              {% endfor %}
+              <div class="lessbutton">
+                Less
+              </div>
+          </div>
         </div>
       </div>
     </div>

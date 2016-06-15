@@ -1,3 +1,9 @@
-$("#more").click(function(){
-  $(this).html("Hello World");
+$(".morebutton").click(function(){
+  // alert('click')
+  $(this).toggle(display= false);
+  $("#more").toggle(display = true);
+})
+
+$(".lessbutton").click(function(){
+  $("#more").toggle(display = false);
 })

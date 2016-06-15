@@ -6,6 +6,7 @@ from django.core.exceptions import *
 import requests
 import json
 import os
+from collections import defaultdict
 
 key = os.environ.get("MEETUP_API_KEY")
 # Create your views here.
@@ -54,10 +55,13 @@ def display(request):
         r = requests.get("{}{}{}{}".format('https://api.meetup.com/members/', meetup_id, key, '&sign=true&fields=topics'))
         meetups = (r.json()['topics'])
         li = []
-        topics = (r.json()['topics'])
-        for topic in topics:
-            li.append(topic['name'])
+        try:
+            topics = (r.json()['topics'])
+            for topic in topics:
+                li.append(topic['name'])
         # meetups pull ends here
+        except:
+            continue
     return render(request, 'communitycrmapp/display.html', {
         'members': members,
         'meetups': li
