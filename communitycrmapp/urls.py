@@ -5,6 +5,7 @@ urlpatterns = [
     url(r'^$', views.home, name="home"),
     url(r'^score', views.score, name="score"),
     url(r'^new', views.new, name='new'),
+    url(r'^edit/(?P<id>\d+)/', views.edit, name='edit'),
     url(r'^display', views.display, name='display'),
     url(r'^member/(?P<id>\d+)/', views.member_item, name='member'),
     url(r'^searchbyname', views.search_by_name, name='search_by_name'),

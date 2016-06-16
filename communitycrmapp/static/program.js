@@ -1,10 +1,10 @@
 $(".morebutton").click(function(){
   // alert('click')
-  $(this).toggle(display= false);
+  $(".morebutton, .editbutton").toggle(display= false);
   $("#more").toggle(display = true);
 })
 
 $(".lessbutton").click(function(){
   $("#more").toggle(display = false);
-  $(".morebutton").toggle(display = true);
+  $(".morebutton, .editbutton").toggle(display = true);
 })

@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response, HttpResponse
+from django.shortcuts import render, render_to_response, HttpResponse, get_object_or_404
 from django.template import RequestContext
 from .forms import MemberForm
 from .models import Member
@@ -30,6 +30,21 @@ def new(request):
     else:
         form = MemberForm()
     return render(request, 'communitycrmapp/new.html', {'form': form})
+
+def edit(request, id):
+    member = get_object_or_404(Member, pk=id)
+    if request.method == "POST":
+        form = MemberForm(request.POST, instance=member)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return render(request, 'communitycrmapp/success.html', {'form': form})
+    else:
+        form = MemberForm(instance=member)
+    return render(request, 'communitycrmapp/new.html', {
+    'form': form,
+    'id': id
+    })
 
 def member_item(request, id):
     member = Member.objects.get(pk=id)
@@ -213,7 +228,7 @@ def donor_search(request):
                         li.append(topic['name'])
                 except:
                     continue
-                # meetups pull ends here 
+                # meetups pull ends here
             return render(request, 'communitycrmapp/results.html', {
                 'donor': donor,
                 'meetups': li})
