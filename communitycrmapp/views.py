@@ -12,15 +12,27 @@ key = os.environ.get("MEETUP_API_KEY")
 # Create your views here.
 
 def home(request):
+    """
+    renders the home page
+    """
     return render(request, 'communitycrmapp/home.html', {})
 
 def score(request):
+    """
+    renders a page that gives context to engagement scores
+    """
     return render(request, 'communitycrmapp/score.html', {})
 
 def searchpage(request):
+    """
+    renders the search page
+    """
     return render(request, 'communitycrmapp/searchpage.html', {})
 
 def new(request):
+    """
+    allows user to create new member
+    """
     if request.method == "POST":
         form = MemberForm(request.POST)
         if form.is_valid():
@@ -32,6 +44,9 @@ def new(request):
     return render(request, 'communitycrmapp/new.html', {'form': form})
 
 def edit(request, id):
+    """
+    allows user to edit existing member
+    """
     member = get_object_or_404(Member, pk=id)
     if request.method == "POST":
         form = MemberForm(request.POST, instance=member)
@@ -47,6 +62,9 @@ def edit(request, id):
     })
 
 def member_item(request, id):
+    """
+    renders individual member data
+    """
     member = Member.objects.get(pk=id)
     # meetups pull starts here
     meetup_id = member.meetupid
@@ -63,6 +81,9 @@ def member_item(request, id):
     })
 
 def display(request):
+    """
+    displays all members in database
+    """
     members = Member.objects.all()
     for member in members:
         # meetups pull starts here
@@ -83,6 +104,9 @@ def display(request):
     })
 
 def search_by_name(request):
+    """
+    allows user to search for members meeting name criteria
+    """
     if request.method == "POST":
         search_id = request.POST.get('namequery')
         try:
@@ -109,6 +133,9 @@ def search_by_name(request):
         return render(request, 'communitycrmapp/searchpage.html')
 
 def search_by_volunteer(request):
+    """
+    allows user to search for members who are volunteers
+    """
     if request.method == "POST":
         search_id = request.POST.get('volunteerquery')
         try:
@@ -136,6 +163,9 @@ def search_by_volunteer(request):
         return render(request, 'communitycrmapp/searchpage.html')
 
 def search_by_host(request):
+    """
+    allows user to search for members who are hosts
+    """
     if request.method == "POST":
         search_id = request.POST.get('hostquery')
         try:
@@ -162,6 +192,9 @@ def search_by_host(request):
         return render(request, 'communitycrmapp/searchpage.html')
 
 def search_by_ohb(request):
+    """
+    allows user to search for members who are a part of the OHB
+    """
     if request.method == "POST":
         search_id = request.POST.get('ohbquery')
         try:
@@ -174,6 +207,9 @@ def search_by_ohb(request):
         return render(request, 'communitycrmapp/searchpage.html')
 
 def search_by_lt(request):
+    """
+    allows user to search for members who are part of the launch team
+    """
     if request.method == "POST":
         search_id = request.POST.get('ltquery')
         try:
@@ -186,6 +222,9 @@ def search_by_lt(request):
         return render(request, 'communitycrmapp/searchpage.html')
 
 def search_by_fb(request):
+    """
+    allows user to search for members who are members of the facebook group
+    """
     if request.method == "POST":
         search_id = request.POST.get('fbquery')
         try:
@@ -212,6 +251,9 @@ def search_by_fb(request):
         return render(request, 'communitycrmapp/searchpage.html')
 
 def donor_search(request):
+    """
+    allows user to search for members who are donors
+    """
     if request.method == "POST":
         search_id = request.POST.get('donationquery')
         try:

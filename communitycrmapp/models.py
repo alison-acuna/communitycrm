@@ -30,6 +30,9 @@ class Member(models.Model):
         return self.name
 
     def engagement_score(self):
+        """
+        calculates engagement score
+        """
         engagement_score = 0
         if self.volunteer:
             engagement_score += 1

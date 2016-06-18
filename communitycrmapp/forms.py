@@ -3,6 +3,9 @@ from django import forms
 from .models import Member
 
 class MemberForm(forms.ModelForm):
+    """
+    renames a variety of model columns for user interaction
+    """
 
     meetupid = forms.CharField(label='Meetup ID')
     eventshostedname = forms.CharField(label='Events Hosted')
